@@ -1,4 +1,19 @@
 @import "tailwindcss";
+
+.my-quill .ql-toolbar {
+  border-radius: 4px 4px 0 0 !important;
+  border: 1px solid #d3d3d3 !important;
+  border-bottom: 0px !important;
+  background-color: transparent !important;
+}
+
+.my-quill .ql-container {
+  border-radius: 0 0 4px 4px !important;
+  border: 1px solid #d3d3d3 !important;
+  border-top: 0px !important;
+  min-height: 500px;
+}
+
 @plugin "daisyui" {
   themes: light --default;
   root: ":root";

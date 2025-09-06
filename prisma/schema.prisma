@@ -32,18 +32,18 @@ model User {
 }
 
 model Account {
-  id                String @id @default(cuid())
+  id                String  @id @default(cuid())
   userId            String
   type              String
   provider          String
   providerAccountId String
-  access_token  String? @db.LongText
-  refresh_token String? @db.LongText
-  id_token      String? @db.LongText
-  scope         String? @db.LongText
-  session_state String? @db.LongText
-  token_type String?
-  expires_at Int?
+  access_token      String? @db.LongText
+  refresh_token     String? @db.LongText
+  id_token          String? @db.LongText
+  scope             String? @db.LongText
+  session_state     String? @db.LongText
+  token_type        String?
+  expires_at        Int?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -68,13 +68,14 @@ model VerificationToken {
 }
 
 model Post {
-  id        String   @id @default(cuid())
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  authorId  String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(cuid())
+  title       String   @db.LongText
+  description String?  @db.LongText
+  content     String?  @db.LongText
+  published   Boolean  @default(false)
+  authorId    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   author User? @relation(fields: [authorId], references: [id], onDelete: SetNull)
 }

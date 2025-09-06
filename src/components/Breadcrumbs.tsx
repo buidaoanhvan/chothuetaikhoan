@@ -7,6 +7,7 @@ const labelMap: Record<string, string> = {
   "nguoi-dung": "Người dùng",
   "tin-tuc": "Tin tức",
   "san-pham": "Sản phẩm",
+  "them-moi": "Thêm mới",
 };
 
 export default function Breadcrumbs() {
