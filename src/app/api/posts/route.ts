@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { isAdmin } from "@/lib/role";
 import { NextResponse } from "next/server";
 
 //lấy danh sách bài viết
@@ -22,12 +23,15 @@ export async function GET() {
 // thêm mới bài viết
 export async function POST(req: Request) {
     try {
+        const payload = await isAdmin();
+        if (!payload) return payload;
         const { title, content, description, status } = await req.json();
         const post = await db.post.create({
             data: {
                 title,
                 content,
                 description,
+                authorId: payload.user.id,
                 published: status
             }
         });
